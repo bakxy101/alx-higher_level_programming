@@ -2,12 +2,9 @@
 """Module defines Square class"""
 
 
-from typing import Tuple
-
-
 class Square:
     """Square class"""
-    def __init__(self, size: int = 0, position: Tuple[int, int] = (0, 0)):
+    def __init__(self, size=0, position=(0, 0)):
         """Constructor method for Square method
 
         Args:
@@ -43,17 +40,17 @@ class Square:
         return self.__position
 
     @position.setter
-    def position(self, pos: Tuple[int, int]):
+    def position(self, pos):
         """Set the position property
 
         Args:
             size (int): Size of square
         """
         if type(pos) == tuple and len(pos) == 2 and type(pos[0]) == int and \
-           type(pos[1]) == int:
+           type(pos[1]) == int and pos[0] >= 0 and pos[1] >= 0:
             self.__position = pos
         else:
-            raise TypeError("position must be a tuple of 2 integers")
+            raise TypeError("position must be a tuple of 2 positive integers")
 
     def area(self):
         """Returns the current square area"""
@@ -65,7 +62,7 @@ class Square:
             for _ in range(self.position[1]):
                 print()
             for _ in range(self.size):
-                print("_" * self.position[0], end="")
+                print(" " * self.position[0], end="")
                 print("#" * self.size)
         else:
             print()
