@@ -1,0 +1,32 @@
+"""Doctest for integers addition"""
+
+>>> adder = __import__('0-add_integer')
+>>> adder.add_integer(2)
+100
+>>> adder.add_integer(2.1)
+100
+>>> adder.add_integer(-8)
+90
+>>> adder.add_integer('a')
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> adder.add_integer('1', '2')
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> adder.add_integer()
+Traceback (most recent call last):
+...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+>>> from math import nan, inf
+>>> try:
+...	adder.add_integer(nan)
+... except Exception as e:
+...	print(e, type(e))
+cannot convert float NaN to integer <class 'ValueError'>
+>>> try:
+...	adder.add_integer(inf)
+... except Exception as e:
+...	print(e, type(e))
+cannot convert float infinity to integer <class 'OverflowError'>
